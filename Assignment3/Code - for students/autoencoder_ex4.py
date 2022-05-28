@@ -18,9 +18,9 @@ class Encoder(nn.Module):
             nn.MaxPool2d(2),                      # Downsampling to 4x4x16
             nn.Conv2d(in_channels = 16, out_channels = 16, kernel_size=3, padding=1), 
             nn.ReLU(inplace=True),
-            # nn.MaxPool2d(2),                      # Downsampling to 2x2x16
+            nn.MaxPool2d(2),                      # Downsampling to 2x2x16
             nn.Flatten(),                   # Flatten 2x2x16 to 1-dim
-            nn.Linear(in_features=64*2*2,out_features=10),
+            nn.Linear(in_features=16*2*2,out_features=10),
             nn.Softmax(dim=1),
             # nn.Conv2d(in_channels = 16, out_channels = 1, kernel_size=3, padding=1), 
             #nn.ReLU(inplace=True),
