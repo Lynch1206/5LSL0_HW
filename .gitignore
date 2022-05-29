@@ -113,7 +113,7 @@ venv.bak/
 # Spyder project settings
 .spyderproject
 .spyproject
-
+MNIST/
 # Rope project settings
 .ropeproject
 
