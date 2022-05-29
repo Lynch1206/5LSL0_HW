@@ -25,7 +25,7 @@ class Encoder(nn.Module):
 
             nn.Flatten(),                   # Flatten 2x2x16 to 1-dim
             nn.Linear(in_features=16*2*2,out_features=10),
-            nn.LogSoftmax(dim=1),
+            # nn.LogSoftmax(dim=1),
             # nn.Conv2d(in_channels = 16, out_channels = 1, kernel_size=3, padding=1), 
             #nn.ReLU(inplace=True),
             # nn.Flatten(),
@@ -43,13 +43,9 @@ class Decoder(nn.Module):
         super(Decoder, self).__init__()
         # create layers here
         self.Decoder = nn.Sequential(
-            nn.Linear(in_features=10,out_features=2),
-            # nn.Upsample(scale_factor=(2,1), mode='bilinear'),  
-            # nn.Flatten(),
-            # nn.ConvTranspose2d(1 , out_channels = 16, kernel_size=3, padding=1), # Padding = 1 ensures that the final output is the same size as input 
+            nn.ConvTranspose2d(10 , out_channels = 16, kernel_size=3, padding=1), # Padding = 1 ensures that the final output is the same size as input 
             nn.ReLU(inplace=True),
-            # nn.Unflatten(1,(10,20,20)),
-            nn.Upsample(scale_factor=(10,1), mode='bilinear'),                     # Upsampling to 2x2x16
+            nn.Upsample(scale_factor=(2,1), mode='bilinear'),                     # Upsampling to 2x2x16
             nn.ConvTranspose2d(in_channels = 16 , out_channels = 16, kernel_size=3, padding=1), 
             nn.ReLU(inplace=True),
             nn.Upsample(scale_factor=2, mode='bilinear'),                     # Upsampling to 4x4x16
@@ -68,9 +64,9 @@ class Decoder(nn.Module):
         return self.Decoder(h) 
 
 # %%  Autoencoder
-class AE4(nn.Module):
+class AE(nn.Module):
     def __init__(self):
-        super(AE4, self).__init__()
+        super(AE, self).__init__()
         self.encoder = Encoder()
         self.decoder = Decoder()
         
@@ -79,5 +75,3 @@ class AE4(nn.Module):
         r = self.decoder(h)
         return r, h
     
-
-# %%
