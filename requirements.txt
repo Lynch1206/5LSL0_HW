@@ -4,3 +4,6 @@ numpy
 matplotlib
 pandas
 scipy
+tqdm
+sklearn
+bokeh

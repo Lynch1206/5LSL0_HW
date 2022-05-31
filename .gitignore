@@ -113,7 +113,7 @@ venv.bak/
 # Spyder project settings
 .spyderproject
 .spyproject
-
+MNIST/
 # Rope project settings
 .ropeproject
 
@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# folders
+MNIST/
+Fig
