@@ -131,3 +131,4 @@ dmypy.json
 # folders
 MNIST/
 Fig
+Fast_MRI_Knee/
