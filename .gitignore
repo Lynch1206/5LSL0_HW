@@ -132,3 +132,4 @@ dmypy.json
 MNIST/
 Fig
 Fast_MRI_Knee/
+**/.DS_Store
